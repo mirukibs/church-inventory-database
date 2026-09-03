@@ -1,0 +1,13 @@
+# Environment Variables
+.env
+
+# Editor & OS files
+.vscode/
+.idea/
+.DS_Store
+
+# Temporary files & Logs
+*.log
+*.csv
+*.out
+.pgdata/
