@@ -1,0 +1,67 @@
+name: Database CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  sql-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install SQLFluff
+        run: pip install sqlfluff
+      - name: Lint SQL files
+        # We only want to lint if there are sql files
+        run: |
+          if [ -d "sql" ] && [ "$(ls -A sql/*.sql 2>/dev/null)" ]; then
+            sqlfluff lint sql/ --dialect postgres
+          else
+            echo "No SQL files to lint yet."
+          fi
+
+  db-build-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: ci_user
+          POSTGRES_PASSWORD: ci_password
+          POSTGRES_DB: church_inventory_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Schema and DDL Tests
+        env:
+          PGPASSWORD: ci_password
+        run: |
+          if [ -d "sql" ] && [ "$(ls -A sql/*.sql 2>/dev/null)" ]; then
+            for f in sql/*.sql; do
+              echo "Executing $f..."
+              psql -h localhost -U ci_user -d church_inventory_test -f "$f"
+            done
+          else
+            echo "No SQL files to build yet."
+          fi
+
+  markdown-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v15
+        with:
+          globs: "**/*.md"
