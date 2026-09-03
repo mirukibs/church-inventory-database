@@ -94,8 +94,6 @@ The condition of equipment when it is assigned and when it is returned should al
 
 Equipment exists in physical locations. These may include the main sanctuary, media room, sound room, offices, storage rooms, choir rooms and other areas within the church.
 
-The church may also have multiple branches, meaning that equipment can exist at different branches and locations.
-
 Equipment may move between locations or departments. Some equipment may also temporarily leave the church premises for events, conferences, recordings, outreach activities or other purposes.
 
 When equipment moves, the system should record the movement, including:
@@ -132,7 +130,7 @@ When it is returned, the church should be able to inspect its condition and dete
 
 Procurement is another important part of the equipment lifecycle because equipment must first enter the church before it can be managed.
 
-The church may acquire equipment through different means, including purchasing, donations, transfers from another branch, ministry projects, grants or other sources.
+The church may acquire equipment through different means, including purchasing, donations, ministry projects, grants or other sources.
 
 For purchased equipment, information such as the supplier, purchase price, purchase date, invoice or reference number and funding source may need to be recorded.
 
@@ -200,7 +198,6 @@ For any equipment item, the church should be able to determine:
 * what maintenance it has received;
 * what incidents have occurred;
 * how much has been spent maintaining it;
-* whether it has been transferred between branches; and
 * when and why it was eventually retired or disposed of.
 
 This history provides accountability and allows the church to understand the complete lifecycle of its equipment.
@@ -213,7 +210,7 @@ The church's equipment information needs to support both operational activities 
 
 Operational users need to know what equipment is available, where it is, who has it and whether it can be used.
 
-Management needs broader reports such as the total value of equipment, equipment by department or branch, equipment requiring maintenance, equipment currently outside the church, lost or damaged equipment, maintenance expenditure and equipment approaching retirement.
+Management needs broader reports such as the total value of equipment, equipment by department, equipment requiring maintenance, equipment currently outside the church, lost or damaged equipment, maintenance expenditure and equipment approaching retirement.
 
 The system should therefore provide reliable information for both day-to-day equipment management and higher-level decision-making.
 
