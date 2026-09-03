@@ -1,9 +1,10 @@
 # Church Equipment & Inventory Management Database
 
-This project is a comprehensive laboratory for mastering database engineering, DBA concepts, and data engineering. 
+This project is a comprehensive laboratory for mastering database engineering, DBA concepts, and data engineering.
 The central problem is **institutional asset accountability and lifecycle management**.
 
 ## The Core Problem
+
 > A church needs reliable knowledge of what equipment it owns, where it is, who is responsible for it, what condition it is in, where it came from, how much it cost, when it was used or moved, what maintenance it has received, and what has happened to it over its entire lifecycle.
 
 ## Project Roadmap & Timeline (Sept 3 - Sept 21)
@@ -51,4 +52,5 @@ flowchart TD
 ```
 
 ## Documentation Standards
+
 All diagrams and architectural representations in this repository MUST be written in **Mermaid** or **PlantUML** (exported to SVG).
