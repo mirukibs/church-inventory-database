@@ -1,84 +1,76 @@
 # Church Equipment & Inventory Management Database
 
-This project is a comprehensive laboratory for mastering database engineering, DBA concepts, and data engineering.
-The central problem is **institutional asset accountability and lifecycle management**.
+Welcome to the central database repository for the Church's Inventory Management system. 
 
-## The Core Problem
+This repository contains the physical data layer (Schema, Views, Triggers) that strictly enforces data integrity, tracks the lifecycle of church assets, and powers our frontend applications.
 
-> A church needs reliable knowledge of what equipment it owns, where it is, who is responsible for it, what condition it is in, where it came from, how much it cost, when it was used or moved, what maintenance it has received, and what has happened to it over its entire lifecycle.
+## 🎯 The Mission
 
-## Infrastructure: "Push of a Button" Setup
+Our goal is to maintain absolute accountability over all institutional assets. This database ensures we have reliable knowledge of:
+* What equipment the church owns.
+* Who is currently responsible for it.
+* What condition it is in, and its operational status.
+* A permanent audit trail of its lifecycle (when it broke, who moved it, and its repair history).
 
-This project is fully containerized with Docker. The database will automatically initialize itself and run all SQL scripts strictly in order.
+## 🏗️ Technology Stack
 
-To start the database and run all migrations:
+* **Database Engine:** PostgreSQL 16
+* **Database Administration GUI:** pgAdmin4
+* **Containerization:** Docker & Docker Compose
+* **Architecture:** Strictly Normalized (3NF+) relational model
+
+## 🚀 Getting Started (Local Development)
+
+This project is fully containerized. The database will automatically initialize itself and run all necessary SQL migration scripts upon startup.
+
+### 1. Start the Environment
+To spin up the Postgres database and the pgAdmin web interface, simply run:
 ```bash
 make up
 ```
 
-To completely reset the database and rerun all scripts from scratch:
+### 2. Access the Database via pgAdmin
+We bundle **pgAdmin4** to allow developers and administrators to visually inspect tables, run queries, and monitor database performance.
+
+* **URL:** [http://localhost:5050](http://localhost:5050)
+* **Email:** `admin@church.org` (or check your `.env` file)
+* **Password:** `admin` (or check your `.env` file)
+
+*Note: Once logged in, register a new server with the hostname `db`, port `5432`, and the database credentials found in your `.env` file.*
+
+### 3. Resetting the Database
+If you are developing schema changes or testing data pipelines and need a completely fresh start, you can wipe the database and re-run all initialization scripts:
 ```bash
 make reset
 ```
+*(Warning: This is a destructive operation that will wipe all local data and recreate the containers from scratch.)*
 
-To access the database shell:
+### 4. Database Shell Access
+To drop straight into a `psql` shell:
 ```bash
 make shell
 ```
 
-### Visual Database Management (pgAdmin)
-The infrastructure also spins up **pgAdmin4**, a web-based GUI for PostgreSQL, so you can visually inspect tables and run EXPLAIN plans without using the command line.
+## 📂 Repository Structure
 
-*   **URL:** `http://localhost:5050`
-*   **Email:** `admin@church.org` (or check your `.env` file)
-*   **Password:** `admin` (or check your `.env` file)
+All database logic is maintained within the `sql/` directory and executed in alphabetical order during initialization:
 
-*Note: Once logged in, you will need to register the local database server inside pgAdmin. Use `db` as the hostname and the credentials from your `.env` file.*
-
-## Project Roadmap & Timeline (Sept 3 - Sept 21)
-
-We are operating on a strict 18-day timeline to complete the database evolution.
-
-| Phase / Milestone | Dates | Duration | Focus |
-| :--- | :--- | :--- | :--- |
-| **1. Domain Modeling & Unnormalized Data** | Sept 3 - Sept 4 | 2 Days | Domain extraction, recognizing anomalies |
-| **2. Database Design** | Sept 5 - Sept 6 | 2 Days | Functional dependencies, Normalization (1NF-BCNF), ER Modeling |
-| **3. Core Database Construction** | Sept 7 - Sept 9 | 3 Days | PostgreSQL DDL, constraints, DML, basic querying |
-| **4. Advanced SQL & Analytics** | Sept 10 - Sept 11 | 2 Days | Subqueries, Window functions, Aggregation |
-| **5. Operational Integrity** | Sept 12 - Sept 13 | 2 Days | Transactions (ACID), Concurrency, Locks, MVCC |
-| **6. Performance Engineering** | Sept 14 - Sept 15 | 2 Days | B-Trees, Execution Plans (`EXPLAIN`), Indexing |
-| **7. Administration & Security** | Sept 16 - Sept 18 | 3 Days | Row-Level Security (RLS), Auditing, Backup & Recovery |
-| **8. Data Engineering** | Sept 19 - Sept 21 | 3 Days | Star Schema, OLTP vs OLAP, Materialized Views |
-
-## Evolutionary Roadmap
-
-The database will evolve organically. Each evolution forces you to learn another part of database engineering:
-
-```mermaid
-flowchart TD
-    A[CHURCH INVENTORY] --> B[DOMAIN MODEL]
-    A --> C[BAD DATASET]
-    B --> D[FUNCTIONAL DEPENDENCIES]
-    C --> D
-    D --> E[NORMALIZATION]
-    E --> F[ER MODEL]
-    F --> G[RELATIONAL MODEL]
-    G --> H[POSTGRESQL DDL]
-    H --> I[DML]
-    I --> J[SQL QUERYING]
-    J --> K[ADVANCED SQL / ANALYTICS]
-    K --> L[TRANSACTIONS / ACID]
-    L --> M[CONCURRENCY]
-    M --> N[INDEXES / PERFORMANCE]
-    N --> O[SECURITY / RLS]
-    O --> P[AUDIT / TEMPORAL DATA]
-    P --> Q[BACKUP / RECOVERY]
-    Q --> R[REPLICATION / HA]
-    R --> S[PARTITIONING]
-    S --> T[DATA WAREHOUSE]
-    T --> U[DATA ENGINEERING]
+```text
+sql/
+├── 01_schema/    # Physical DDL: Custom Types, Enums, Tables, and Constraints
+├── 02_views/     # Application Layer: Complex JOIN abstractions for the frontend
+├── 03_logic/     # Automated Actions: PL/pgSQL Functions and Audit Triggers
+└── 04_seed/      # Data Pipelines: ETL staging, transformation, and static seeding
 ```
 
-## Documentation Standards
+## 🤝 Contributing
 
-All diagrams and architectural representations in this repository MUST be written in **Mermaid** or **PlantUML** (exported to SVG).
+We welcome contributions from other developers! If you are building the frontend or adding new features to the database:
+
+1. **Simplicity First (KISS):** We prefer straightforward schema designs.
+2. **Strict Data Integrity:** Rely heavily on PostgreSQL constraints (Foreign Keys, Checks) to protect the data at the lowest level rather than relying on application code.
+3. **Audit Trails:** Ensure any critical updates fire the appropriate logging triggers.
+
+## 📝 Documentation
+
+All internal architecture diagrams and database workflows are documented using Mermaid syntax within the repository.
