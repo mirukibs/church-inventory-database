@@ -1,6 +1,6 @@
-# Church Equipment & Inventory Management Database
+# CAG KCM Equipment & Inventory Management Database
 
-Welcome to the central database repository for the Church's Inventory Management system. 
+Welcome to the central database repository for the CAG KCM Inventory Management system. 
 
 This repository contains the physical data layer (Schema, Views, Triggers) that strictly enforces data integrity, tracks the lifecycle of church assets, and powers our frontend applications.
 
