@@ -45,7 +45,12 @@ make reset
 ```
 *(Warning: This is a destructive operation that will wipe all local data and recreate the containers from scratch.)*
 
-### 4. Database Shell Access
+### 4. Seed Data Requirement (Important!)
+Because actual church inventory data is private, the `*.csv` files are intentionally ignored by Git (via `.gitignore`). 
+
+When another developer clones this repository, they will not have the initial data required by the ETL pipeline. Before running `make up` for the first time, you must create a file at `sql/04_seed/data/Equipment.csv` containing the raw data, otherwise the database initialization scripts will fail to find the file during the `COPY` command.
+
+### 5. Database Shell Access
 To drop straight into a `psql` shell:
 ```bash
 make shell
