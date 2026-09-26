@@ -82,7 +82,10 @@ CREATE TABLE equipment_assignments (
     department_id UUID NOT NULL REFERENCES departments(department_id) ON DELETE RESTRICT,
     custodian_person_id UUID REFERENCES people(person_id) ON DELETE SET NULL,
     assigned_date DATE NOT NULL DEFAULT CURRENT_DATE,
-    released_date DATE
+    released_date DATE,
+
+    -- Constraints
+    CONSTRAINT chk_released_after_assigned CHECK (released_date IS NULL OR released_date >= assigned_date)
 );
 
 -- ==========================================
