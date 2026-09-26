@@ -7,6 +7,25 @@ The central problem is **institutional asset accountability and lifecycle manage
 
 > A church needs reliable knowledge of what equipment it owns, where it is, who is responsible for it, what condition it is in, where it came from, how much it cost, when it was used or moved, what maintenance it has received, and what has happened to it over its entire lifecycle.
 
+## Infrastructure: "Push of a Button" Setup
+
+This project is fully containerized with Docker. The database will automatically initialize itself and run all SQL scripts strictly in order.
+
+To start the database and run all migrations:
+```bash
+make up
+```
+
+To completely reset the database and rerun all scripts from scratch:
+```bash
+make reset
+```
+
+To access the database shell:
+```bash
+make shell
+```
+
 ## Project Roadmap & Timeline (Sept 3 - Sept 21)
 
 We are operating on a strict 18-day timeline to complete the database evolution.
