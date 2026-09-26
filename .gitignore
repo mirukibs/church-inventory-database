@@ -14,5 +14,3 @@
 .venv/
 docs/playbook/
 *.xlsx
-.agents/
-.agents/AGENTS.md
