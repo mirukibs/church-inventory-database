@@ -40,7 +40,8 @@ erDiagram
         uuid owner_person_id FK
         uuid department_id FK
         uuid custodian_person_id FK
-        numeric unit_cost_tzs
+        numeric purchase_price_tzs
+        date purchase_date
     }
 
     equipment_assignments {
@@ -49,7 +50,7 @@ erDiagram
         uuid department_id FK
         uuid custodian_person_id FK
         date assigned_date
-        date released_date
+        date released_date "CHECK: >= assigned_date"
     }
 
     equipment_movements {

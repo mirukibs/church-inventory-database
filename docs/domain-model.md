@@ -1,8 +1,8 @@
-# Domain Model
+# CAG KCM Domain Model
 
 ## Context
 
-Our church faces a problem of having to manage equipment of different types, scattered across different departments, custodians and locations within the church. An equipment management system is required to properly track the equipment and activities related to them, but to achieve that, a thorough database of all equipment is required.
+CAG KCM faces a problem of having to manage equipment of different types, scattered across different departments, custodians and locations within the church. An equipment management system is required to properly track the equipment and activities related to them, but to achieve that, a thorough database of all equipment is required.
 
 The problem is not simply knowing what equipment the church owns. The church needs to know **what equipment exists, where it is, who is responsible for it, what condition it is in, how it was acquired, how it is being used, what has happened to it over time, and what resources are required to maintain and operate it**.
 
