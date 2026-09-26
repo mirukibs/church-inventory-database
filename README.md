@@ -26,6 +26,15 @@ To access the database shell:
 make shell
 ```
 
+### Visual Database Management (pgAdmin)
+The infrastructure also spins up **pgAdmin4**, a web-based GUI for PostgreSQL, so you can visually inspect tables and run EXPLAIN plans without using the command line.
+
+*   **URL:** `http://localhost:5050`
+*   **Email:** `admin@church.org` (or check your `.env` file)
+*   **Password:** `admin` (or check your `.env` file)
+
+*Note: Once logged in, you will need to register the local database server inside pgAdmin. Use `db` as the hostname and the credentials from your `.env` file.*
+
 ## Project Roadmap & Timeline (Sept 3 - Sept 21)
 
 We are operating on a strict 18-day timeline to complete the database evolution.
