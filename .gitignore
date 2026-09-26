@@ -11,3 +11,6 @@
 *.csv
 *.out
 .pgdata/
+.venv/
+docs/playbook/
+*.xlsx
