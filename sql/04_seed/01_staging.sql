@@ -30,5 +30,5 @@ CREATE TABLE staging.equipment_raw (
 -- Copy data from the mounted CSV file
 -- Docker mounts ./sql to /app/sql
 COPY staging.equipment_raw 
-FROM '/app/sql/03_seed/data/Equipment.csv' 
+FROM '/app/sql/04_seed/data/Equipment.csv' 
 WITH (FORMAT csv, HEADER true);
