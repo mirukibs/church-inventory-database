@@ -47,7 +47,7 @@ ON CONFLICT DO NOTHING;
 INSERT INTO equipment (
     asset_number, asset_tag, equipment_name, category_id, brand, model, serial_number,
     tracking_method, quantity, condition, status, ownership, 
-    owner_person_id, department_id, custodian_person_id, unit_cost_tzs
+    owner_person_id, department_id, custodian_person_id, purchase_price_tzs, purchase_date
 )
 SELECT 
     -- Append -idx if we are duplicating an INDIVIDUAL item, otherwise just the asset number
@@ -104,7 +104,8 @@ SELECT
     
     (SELECT person_id FROM people WHERE name = TRIM(r.custodian_person_id) LIMIT 1) as custodian_person_id,
     
-    CAST(NULLIF(TRIM(r.unit_cost_tzs), '') AS NUMERIC)
+    CAST(NULLIF(TRIM(r.unit_cost_tzs), '') AS NUMERIC) as purchase_price_tzs,
+    CAST(NULLIF(TRIM(r.purchase_date), '') AS DATE) as purchase_date
     
 FROM staging.equipment_raw r
 -- The Cross Join dynamically duplicates rows for INDIVIDUAL items with quantity > 1

@@ -62,7 +62,8 @@ CREATE TABLE equipment (
     custodian_person_id UUID REFERENCES people(person_id) ON DELETE SET NULL,
     
     -- Financials
-    unit_cost_tzs NUMERIC(14,2),
+    purchase_price_tzs NUMERIC(14,2),
+    purchase_date DATE,
 
     -- Constraints
     CONSTRAINT chk_quantity_positive CHECK (quantity > 0),
